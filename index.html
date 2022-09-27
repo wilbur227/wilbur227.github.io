@@ -265,8 +265,8 @@
     <article id="post-Linux高级编程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2022/09/26/Linux%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/" class="article-date">
-      <time datetime="2022-09-26T00:11:03.000Z" itemprop="datePublished">2022-09-26</time>
+      <a href="/2022/09/27/Linux%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/" class="article-date">
+      <time datetime="2022-09-27T00:11:03.000Z" itemprop="datePublished">2022-09-27</time>
 </a>
 
 
@@ -281,7 +281,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/26/Linux%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">Linux高级编程笔记</a>
+      <a class="article-title" href="/2022/09/27/Linux%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">Linux高级编程（笔记）</a>
     </h1>
   
 
@@ -309,7 +309,7 @@
 <h5 id="1-5关联性设置："><a href="#1-5关联性设置：" class="headerlink" title="1.5关联性设置："></a>1.5关联性设置：</h5><p>1.用本地Git软件与Github账号进行关联设置</p>
 <p>2.为云端的仓库地址起别名，便于后期将本地内容上传同步到云端</p>
 <h5 id="1-6Git软件的介绍与Git命令"><a href="#1-6Git软件的介绍与Git命令" class="headerlink" title="1.6Git软件的介绍与Git命令"></a>1.6Git软件的介绍与Git命令</h5><p>Git是一个分布式版本的控制系统，开发使用Git软件可以特别方便的管理云端仓库，对云端内容进行同步，修改，删除等等操作</p>
-<p>ssh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#109;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#109;</a> #关联认证</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;</a> #关联认证</p>
 <p>git init #创建本地仓库</p>
 <p>git config –list #查看git配置信息</p>
 <p>git config –global #键值对 #向配置文件中添加配置项user.name user.emali</p>
@@ -317,10 +317,10 @@
 <h5 id="1-7配置流程："><a href="#1-7配置流程：" class="headerlink" title="1.7配置流程："></a>1.7配置流程：</h5><p>1.根据生成密钥的存储位置，找到id_rsa.pub公有密钥文件,拷贝其中的密钥字符串</p>
 <p>2.Github云端账号中用户头像位置的下拉菜单，选择settings</p>
 <p>3.SSH and GPG Key，将复制的本地密钥字符串粘贴，Add Keys</p>
-<p>4.ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a> #再次测试关联</p>
-<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>4.ssh -T <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a> #再次测试关联</p>
+<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>为云端仓库地址起别名，后续通过别名上传本地内容到云端</p>
-<p>git remote add origin <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#x69;&#116;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>git remote add origin <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>git remote remove origin #删除别名</p>
 <h5 id="1-9完整代码提交流程"><a href="#1-9完整代码提交流程" class="headerlink" title="1.9完整代码提交流程"></a>1.9完整代码提交流程</h5><p>git add code.cpp #将代码添加到缓冲区</p>
 <p>git status #查看缓冲区内容和状态</p>
@@ -330,6 +330,7 @@
 <p>git restore code.cpp #还原内容</p>
 <p>git pull –rebase origin master #从云端仓库拉取分支到本地</p>
 <p>git clone “HTTPS的仓库地址”</p>
+<p><a target="_blank" rel="noopener" href="https://sm.ms/" title="点击进入sm.ms">图片上传网站</a></p>
 <h2 id="2-Linux基本命令"><a href="#2-Linux基本命令" class="headerlink" title="2.Linux基本命令"></a>2.Linux基本命令</h2><p>ls<br>ls -l<br>ls -a<br>ls -R 递归列出所有文件夹<br>man ls查看命令帮助</p>
 <p>echo输出<br>cd改变文件夹<br>cd ..回到上一个文件夹<br>cd &#x2F;回到根目录<br>cd ~<br>cd<br>pwd 获取文件所在路径</p>
 <p>clear 清屏<br>当唯一确定时tab可以自动补齐<br>mkdir 创建文件夹<br>rmdir 移除文件夹<br>rm -r递归删除<br>rm -rf强制删除不询问<br>touch 创建文件<br>mv（移动文件&#x2F;重命名文件）<br>cp（拷贝文件或内容）<br>vi（打开一个文件编辑）<br>wq保存并退出<br>q直接退出<br>q!不保存退出</p>
@@ -428,7 +429,7 @@
 <h5 id="负载均衡策略："><a href="#负载均衡策略：" class="headerlink" title="负载均衡策略："></a>负载均衡策略：</h5><h5 id="代理服务器作用："><a href="#代理服务器作用：" class="headerlink" title="代理服务器作用："></a>代理服务器作用：</h5><h5 id="HA高可用模型："><a href="#HA高可用模型：" class="headerlink" title="HA高可用模型："></a>HA高可用模型：</h5><h5 id="TPS-QPS-吞吐量，压力测试，负载测试等等服务器性能指标："><a href="#TPS-QPS-吞吐量，压力测试，负载测试等等服务器性能指标：" class="headerlink" title="TPS,QPS,吞吐量，压力测试，负载测试等等服务器性能指标："></a>TPS,QPS,吞吐量，压力测试，负载测试等等服务器性能指标：</h5><h5 id="服务器开发："><a href="#服务器开发：" class="headerlink" title="服务器开发："></a>服务器开发：</h5><p>本章代码，主要放在服务器的设计实现，优化上，客户端实现基本功能即可（连接与断开，响应系统时间）</p>
 <p>对简单的客户端服务器模型进行补充，对套接字函数进行二次包裹便于使用，实现一个简单业务，客户端通过timeofday关键向服务器请求系统时间，服务器进行反馈响应</p>
 <p>对于socket套接字函数的二次包裹，网络研发工程师会根据使用系统，对函数或库函数进行包裹，将套接字函数的错误处理包裹起来，便于使用</p>
-<h5 id="单进程服务端测试DEMO-1-1"><a href="#单进程服务端测试DEMO-1-1" class="headerlink" title="单进程服务端测试DEMO(1:1)"></a>单进程服务端测试DEMO(1:1)</h5><h2 id="9-正则表达式"><a href="#9-正则表达式" class="headerlink" title="9.正则表达式"></a>9.正则表达式</h2><h2 id="10-阶段项目"><a href="#10-阶段项目" class="headerlink" title="10.阶段项目"></a>10.阶段项目</h2>
+<h5 id="单进程服务端测试DEMO-1-1"><a href="#单进程服务端测试DEMO-1-1" class="headerlink" title="单进程服务端测试DEMO(1:1)"></a>单进程服务端测试DEMO(1:1)</h5><h5 id="多进程并发模型-1-N"><a href="#多进程并发模型-1-N" class="headerlink" title="多进程并发模型(1:N)"></a>多进程并发模型(1:N)</h5><h2 id="9-正则表达式"><a href="#9-正则表达式" class="headerlink" title="9.正则表达式"></a>9.正则表达式</h2><h2 id="10-阶段项目"><a href="#10-阶段项目" class="headerlink" title="10.阶段项目"></a>10.阶段项目</h2>
       
     </div>
     
@@ -473,7 +474,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/26/%E6%95%B2%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8C%AB%E7%9A%84%E5%8D%9A%E5%AE%A2/">敲代码的猫的博客</a>
+      <a class="article-title" href="/2022/09/26/%E6%95%B2%E4%BB%A3%E7%A0%81%E7%9A%84%E7%8C%AB%E7%9A%84%E5%8D%9A%E5%AE%A2/">敲代码的猫的博客（日常）</a>
     </h1>
   
 
@@ -483,7 +484,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h5 id="今天阿猫开通了自己的微博，纪念一下吧"><a href="#今天阿猫开通了自己的微博，纪念一下吧" class="headerlink" title="今天阿猫开通了自己的微博，纪念一下吧~"></a>今天阿猫开通了自己的微博，纪念一下吧~</h5><p><img src="https://s2.loli.net/2022/09/27/AGzE9U2LFQk53Tx.jpg" alt="e82ad33443f80ddaa3b6320f5f8db92.jpg"></p>
+<p>之后阿猫会定期更新一些编程心得和日常（暗中观察）</p>
+<p><img src="https://s2.loli.net/2022/09/27/U1ucCsB2njhiqgm.jpg" alt="0d697434065cf5a0fa29fbe84fb622d.jpg"></p>
+
       
     </div>
     
