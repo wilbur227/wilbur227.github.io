@@ -303,7 +303,30 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="进程的控制"><a href="#进程的控制" class="headerlink" title="进程的控制"></a>进程的控制</h1><h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>进程由程序、数据、进程控制块三部分组成</p>
+        <p>[TOC]</p>
+<h1 id="UNIX程序设计笔记"><a href="#UNIX程序设计笔记" class="headerlink" title="UNIX程序设计笔记"></a>UNIX程序设计笔记</h1><h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="9-进程的控制"><a href="#9-进程的控制" class="headerlink" title="9.进程的控制"></a>9.进程的控制</h2><h5 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h5><p>进程由程序、数据、进程控制块三部分组成</p>
 <p>程序：描述进程所要完成的功能</p>
 <p>数据：为进程提供运行所需的堆栈和私有数据</p>
 <p>进程控制块（PCB）：含有进程的描述和控制信息，集中反映进程的动态特性，是系统识别和控制进程的依据。</p>
@@ -323,11 +346,40 @@
 <p>新创建的进程称为子进程，调用fork()的进程称为父进程</p>
 <p>如果fork()调用失败，返回-1；如果调用成功，则在父进程中返回子进程的标识号，在子进程中返回0。</p>
 <p>创建fork1.c</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">pid_t</span> pid;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">fprintf</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">pid_t</span> pid;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Process Begin. pid=[%d],i=[%d]\n&quot;</span>,getpid(),i);</span><br><span class="line">    <span class="keyword">if</span>((pid = fork()) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Parent pid=[%d],child pid=[%d]\n&quot;</span>,getpid(),pid);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(pid == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Child pid=[%d]\n&quot;</span>,getpid());</span><br><span class="line">        i++;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Fork failed.\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">&quot;Process end.pid=[%d],i=[%d]\n&quot;</span>,getpid(),i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Process Begin. pid=[2778],i=[0]</span><br><span class="line">Parent pid=[2778],child pid=[2779]</span><br><span class="line">Process end.pid=[2778],i=[0]</span><br><span class="line">Child pid=[2779]</span><br><span class="line">Process end.id=[2779],i=[1]</span><br></pre></td></tr></table></figure>
 
 
 
-<h5 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h5><p>已经中止但是没有从进程表中清除的进程。</p>
+<h5 id="进程的休眠"><a href="#进程的休眠" class="headerlink" title="进程的休眠"></a>进程的休眠</h5><h5 id="进程的终止"><a href="#进程的终止" class="headerlink" title="进程的终止"></a>进程的终止</h5><h5 id="进程的同步"><a href="#进程的同步" class="headerlink" title="进程的同步"></a>进程的同步</h5><h5 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h5><p>已经中止但是没有从进程表中清除的进程。</p>
+<h5 id="守护进程-1"><a href="#守护进程-1" class="headerlink" title="守护进程"></a>守护进程</h5><p>独立于终端，长期在后台运行，周期性的执行某项任务，或者阻塞直到事件发生，守护计算机系统的正常运行。</p>
+<p>大部分SOCKET通信都是以守护进程的方式执行</p>
+<p>编写：</p>
+<p>1.后台执行</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">pid_t</span> pid1;</span><br><span class="line">pid1 = fork();</span><br><span class="line"><span class="keyword">if</span>(pid1&gt;<span class="number">0</span>)<span class="built_in">exit</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.独立于控制终端</p>
+<p>自立新的进程组（会话组进程）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="type">pid_t</span> <span class="title function_">setsid</span><span class="params">()</span>;</span><br><span class="line"><span class="comment">//调用成功返回创建的进程组ID，失败返回-1</span></span><br></pre></td></tr></table></figure>
+
+<p>3.清除文件创建掩码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">umask(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4.处理信号</p>
+<p>防止父进程没有等待子进程的结束而导致子进程僵死。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">signal(SIGCHLD,SIG_IGN);</span><br></pre></td></tr></table></figure>
+
+<p>守护进程实例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;comlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;signal.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;sys/wait.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">ClearChild</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">pid_t</span> <span class="type">_pid_t</span>;</span><br><span class="line">    <span class="type">int</span> nState;</span><br><span class="line">    <span class="keyword">while</span>((<span class="type">_pid_t</span> = waitpid(<span class="number">-1</span>,&amp;nState,WNOHANG))&gt;<span class="number">0</span>);</span><br><span class="line">    signal(SIGCLD,ClearChild);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">InitServer</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">pid_t</span> pid1;</span><br><span class="line">    ASSERT((pid1 = fork()) &gt;= <span class="number">0</span>);<span class="comment">/*等价于IF判断*/</span></span><br><span class="line">	<span class="comment">//创建子进程</span></span><br><span class="line">    <span class="keyword">if</span>( pid1 &gt; <span class="number">0</span>)&#123;<span class="comment">//父进程失败退出，子进程托管</span></span><br><span class="line">        sleep(<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    ASSERT(setsid() &gt;= <span class="number">0</span>);<span class="comment">//子进程脱离终端</span></span><br><span class="line">    umask(<span class="number">0</span>);<span class="comment">//清除文件创建掩码</span></span><br><span class="line">    signal(SIGINT,SIG_IGN);<span class="comment">//忽略程序终止程序</span></span><br><span class="line">    signal(SIGCLD,ClearChild);<span class="comment">//一次性的函数，处理信号预防僵死进程</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    InitServer();</span><br><span class="line">    sleep(<span class="number">120</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>进程间的交流：信号、通信</p>
+<h2 id="10-时钟和信号"><a href="#10-时钟和信号" class="headerlink" title="10.时钟和信号"></a>10.时钟和信号</h2><h5 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h5><p>1970年1月1日0点0分0秒为UNIX纪元</p>
 
       
     </div>
@@ -486,7 +538,7 @@
 <h5 id="1-5关联性设置："><a href="#1-5关联性设置：" class="headerlink" title="1.5关联性设置："></a>1.5关联性设置：</h5><p>1.用本地Git软件与Github账号进行关联设置</p>
 <p>2.为云端的仓库地址起别名，便于后期将本地内容上传同步到云端</p>
 <h5 id="1-6Git软件的介绍与Git命令"><a href="#1-6Git软件的介绍与Git命令" class="headerlink" title="1.6Git软件的介绍与Git命令"></a>1.6Git软件的介绍与Git命令</h5><p>Git是一个分布式版本的控制系统，开发使用Git软件可以特别方便的管理云端仓库，对云端内容进行同步，修改，删除等等操作</p>
-<p>ssh -T <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a> #关联认证</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a> #关联认证</p>
 <p>git init #创建本地仓库</p>
 <p>git config –list #查看git配置信息</p>
 <p>git config –global #键值对 #向配置文件中添加配置项user.name user.emali</p>
@@ -494,10 +546,10 @@
 <h5 id="1-7配置流程："><a href="#1-7配置流程：" class="headerlink" title="1.7配置流程："></a>1.7配置流程：</h5><p>1.根据生成密钥的存储位置，找到id_rsa.pub公有密钥文件,拷贝其中的密钥字符串</p>
 <p>2.Github云端账号中用户头像位置的下拉菜单，选择settings</p>
 <p>3.SSH and GPG Key，将复制的本地密钥字符串粘贴，Add Keys</p>
-<p>4.ssh -T <a href="mailto:&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#103;&#105;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a> #再次测试关联</p>
-<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#109;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>4.ssh -T <a href="mailto:&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#x67;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a> #再次测试关联</p>
+<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>为云端仓库地址起别名，后续通过别名上传本地内容到云端</p>
-<p>git remote add origin <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>git remote add origin <a href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>git remote remove origin #删除别名</p>
 <h5 id="1-9完整代码提交流程"><a href="#1-9完整代码提交流程" class="headerlink" title="1.9完整代码提交流程"></a>1.9完整代码提交流程</h5><p>git add code.cpp #将代码添加到缓冲区</p>
 <p>git status #查看缓冲区内容和状态</p>
