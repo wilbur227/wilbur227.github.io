@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="[TOC] 算法">
+<meta name="description" content="[TOC] 算法时间复杂度：TimeComplexity为了解决问题，程序中代码的总的执行次数 1.舍弃掉计算结果中的常数项2.多项式级别的运算，只保留最大项3.如果当前的算法在有限可数的资源消耗内即可完成。复杂度为O(1) 时间复杂度排列  O(1) &lt; O(logN) &lt; O(n) &lt; O(NlogN) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法与数据结构（笔记）">
 <meta property="og:url" content="http://example.com/2022/10/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%94%E8%AE%B0%EF%BC%89/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[TOC] 算法">
+<meta property="og:description" content="[TOC] 算法时间复杂度：TimeComplexity为了解决问题，程序中代码的总的执行次数 1.舍弃掉计算结果中的常数项2.多项式级别的运算，只保留最大项3.如果当前的算法在有限可数的资源消耗内即可完成。复杂度为O(1) 时间复杂度排列  O(1) &lt; O(logN) &lt; O(n) &lt; O(NlogN) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-11T09:14:32.000Z">
-<meta property="article:modified_time" content="2022-11-03T03:00:54.950Z">
+<meta property="article:modified_time" content="2022-11-10T01:27:58.460Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -308,7 +308,65 @@
       
           
         <p>[TOC]</p>
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h3 id="时间复杂度：TimeComplexity"><a href="#时间复杂度：TimeComplexity" class="headerlink" title="时间复杂度：TimeComplexity"></a>时间复杂度：TimeComplexity</h3><p>为了解决问题，程序中代码的总的执行次数</p>
+<p>1.舍弃掉计算结果中的常数项<br>2.多项式级别的运算，只保留最大项<br>3.如果当前的算法在有限可数的资源消耗内即可完成。复杂度为O(1)</p>
+<p>时间复杂度排列</p>
+<p> O(1) &lt; O(logN) &lt; O(n) &lt; O(NlogN) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) </p>
+<p>经验性结论：<br>1.单纯的顺序结构或者选择结构，时间复杂度为O(1)<br>2.一个单纯的循环结构一般情况下时间复杂度为O(n)<br>3.一般情况下两层嵌套循环，时间复杂度是O(n^2)<br>4.采用二分的分治法，时间复杂度是logn<br>5.会采用分治、递归、动态规划等算法用空间换取时间效率<br>6.两个顺序执行的循环，时间消耗取二者里的大值O(max(m,n))</p>
+<h3 id="空间复杂度：SpaceComplexity"><a href="#空间复杂度：SpaceComplexity" class="headerlink" title="空间复杂度：SpaceComplexity"></a>空间复杂度：SpaceComplexity</h3><p>为了解决问题所额外消耗的空间</p>
+<p>数据结构：<br>线性<br>非线性</p>
+<p>线性结构:一对一存储<br>顺序存储：	<br>1.基于索引的查询速度块O(1)<br>2.对无序数组的数值搜素O(n)<br>3.对有序数组的数值搜素O(logn)<br>4.在数组空间足够的前提下：<br>尾添加O(1)尾删除:O(1)<br>5.在数组空间足够的前提下：<br>头添加、头删除、中间添加、中间删除，O(n)<br>空间不足，添加元素需要进行空间申请，及原有数据的拷贝</p>
+<p>题目<br>一个有n个元素的数组，每个元素的值范围在0~n之间，检测数据是否重复出现，若重复出现，则当前数据是坏数据。<br>力扣 217</p>
+<p>解法一、排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">bool</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; nums)</span> &#123;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="type">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>解法二、索引</p>
+<p>时间复杂度：O(n)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsDupLicate</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> nLength)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> nIndex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; nLength; ) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] == i) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//检测当前数值作为索引对应的目标位置</span></span><br><span class="line">            nIndex = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (arr[i] == arr[nIndex]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//交换</span></span><br><span class="line">                arr[i] = arr[nIndex] ^ arr[i];</span><br><span class="line">                arr[nIndex] = arr[nIndex] ^ arr[i];</span><br><span class="line">                arr[i] = arr[nIndex] ^ arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">4</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> result = IsDupLicate(arr,<span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,result);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异或应用"><a href="#异或应用" class="headerlink" title="异或应用"></a>异或应用</h3><p>异或：相同为0，相异为1</p>
+<p>不申请中间变量交换两个变量的值<br>a &#x3D; a^b;<br>b &#x3D; a^b;<br>a &#x3D; a^b;</p>
+<p>不用运算符实现加法运算</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (num2)</span><br><span class="line">    &#123;</span><br><span class="line">            <span class="type">int</span> sum = num1 ^ num2; <span class="comment">//相加的结果</span></span><br><span class="line">            <span class="type">int</span> carry = (num1 &amp; num2) &lt;&lt; <span class="number">1</span>; <span class="comment">//进位的结果</span></span><br><span class="line">            num1 = sum;</span><br><span class="line">            num2 = carry;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>链表，</p>
+<p>数组，</p>
+<p>栈，</p>
+<p>队列，</p>
+<p>字符串。</p>
+<p>异或应用，</p>
+<p>格雷码，</p>
+<p>哈希表，</p>
+<p>跳表，</p>
+<p>kmp，</p>
+<p>Sunday</p>
+<p>一组数据内元素，2个元素出现1次，其他元素均出现2次，如何快速的找到只出现一次的元素<br>力扣 136</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	    <span class="type">int</span> i;</span><br><span class="line">	    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">	    	ans^= nums[i];</span><br><span class="line">	    &#125;</span><br><span class="line">    	</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>青蛙跳台阶<br>剑指 Offer 10- II. 青蛙跳台阶问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">numWays</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> i_1 = <span class="number">1</span>;</span><br><span class="line">    	<span class="type">int</span> i_2 = <span class="number">1</span>;</span><br><span class="line">	    <span class="type">int</span> i = i_1 + i_2;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">2</span>; k &lt;= n; k++)</span><br><span class="line">    	&#123;</span><br><span class="line">	    	i = (i_1 + i_2)%<span class="number">1000000007</span>;</span><br><span class="line">	    	i_1 = i_2;</span><br><span class="line">	    	i_2 = i;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>递归<br>当前问题可以拆解成更小的子问题，子问题除数据规模以外，解决问题的方法与当前问题完全相同，并且有明确的终止条件</p>
+<p>斐波那契数列<br>F(1) &#x3D; 1;<br>F(2) &#x3D; 2<br>F(n) &#x3D; F(n-1)+F(n-2)</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>满二叉树、完全二叉树可以使用顺序存储</p>
+<h4 id="5-一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1-n"><a href="#5-一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1-n" class="headerlink" title="5.一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1~n"></a>5.一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1~n</h4><p>编号为i的节点，如果</p>
+<p>1&gt;满足： 2*i &lt;&#x3D; n 编号为i的节点有左孩子，左孩子编号为2*i</p>
+<p>2&gt;满足：2*i+1 &lt;&#x3D;n 编号为i的节点有右孩子，右孩子编号为2*i+1,否则无右</p>
+<p>3&gt;父亲节点编号范围为：1~n&#x2F;2</p>
+<h3 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h3><p>前序：</p>
+<p>中序：左、根、右</p>
+<p>后序：左、右、根</p>
+<h3 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h3><p>1查找</p>
+<p>2Del</p>
+
       
     </div>
     
@@ -319,7 +377,7 @@
         <p><span>Title:</span><a href="/2022/10/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%94%E8%AE%B0%EF%BC%89/">算法与数据结构（笔记）</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-10-11, 17:14:32</p>
-        <p><span>Updated:</span>2022-11-03, 11:00:54</p>
+        <p><span>Updated:</span>2022-11-10, 09:27:58</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/10/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%94%E8%AE%B0%EF%BC%89/" title="算法与数据结构（笔记）">http://example.com/2022/10/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%94%E8%AE%B0%EF%BC%89/</a>
             <span class="copy-path" data-clipboard-text="From http://example.com/2022/10/11/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%94%E8%AE%B0%EF%BC%89/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -355,7 +413,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">算法</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9ATimeComplexity"><span class="toc-number">1.0.1.</span> <span class="toc-text">时间复杂度：TimeComplexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%EF%BC%9ASpaceComplexity"><span class="toc-number">1.0.2.</span> <span class="toc-text">空间复杂度：SpaceComplexity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%88%96%E5%BA%94%E7%94%A8"><span class="toc-number">1.0.3.</span> <span class="toc-text">异或应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.0.4.</span> <span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">1.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">2.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3"><span class="toc-number">1.0.4.3.</span> <span class="toc-text">3.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4"><span class="toc-number">1.0.4.4.</span> <span class="toc-text">4.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%B8%80%E6%A3%B5%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%8C%E4%BB%8E%E4%B8%8A%E5%88%B0%E4%B8%8B%EF%BC%8C%E4%BB%8E%E5%B7%A6%E5%88%B0%E5%8F%B3%E4%BB%8E1%E5%BC%80%E5%A7%8B%E7%BC%96%E5%8F%B7%EF%BC%8C%E7%BC%96%E5%8F%B7%E8%8C%83%E5%9B%B4%E4%B8%BA1-n"><span class="toc-number">1.0.4.5.</span> <span class="toc-text">5.一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1~n</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="toc-number">1.0.5.</span> <span class="toc-text">二叉树遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BST"><span class="toc-number">1.0.6.</span> <span class="toc-text">BST</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>

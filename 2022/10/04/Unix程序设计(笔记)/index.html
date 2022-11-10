@@ -15,15 +15,15 @@
 
 
 
-<meta name="description" content="[TOC] UNIX程序设计笔记头文件12#include&lt;time.h&gt;#include&lt;&gt;  1.Unix基本操作shell文件管理ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名 目录管理pwd cd mkdir rmdir du 文本编辑器vi2.编程套件gcc或cc编译程序">
+<meta name="description" content="[TOC] UNIX程序设计笔记头文件12#include&lt;time.h&gt;#include&lt;&gt;  1.Unix基本操作shelllsls -lls -als -R 递归列出所有文件夹man ls查看命令帮助 echo输出cd改变文件夹cd ..回到上一个文件夹cd &#x2F;回到根目录cd ~cdpwd 获取文件所在路径 clear 清屏当唯一确定时tab可以自动补齐mk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unix程序设计（笔记）">
 <meta property="og:url" content="http://example.com/2022/10/04/Unix%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1(%E7%AC%94%E8%AE%B0)/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[TOC] UNIX程序设计笔记头文件12#include&lt;time.h&gt;#include&lt;&gt;  1.Unix基本操作shell文件管理ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名 目录管理pwd cd mkdir rmdir du 文本编辑器vi2.编程套件gcc或cc编译程序">
+<meta property="og:description" content="[TOC] UNIX程序设计笔记头文件12#include&lt;time.h&gt;#include&lt;&gt;  1.Unix基本操作shelllsls -lls -als -R 递归列出所有文件夹man ls查看命令帮助 echo输出cd改变文件夹cd ..回到上一个文件夹cd &#x2F;回到根目录cd ~cdpwd 获取文件所在路径 clear 清屏当唯一确定时tab可以自动补齐mk">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-04T03:01:24.000Z">
-<meta property="article:modified_time" content="2022-11-03T03:00:18.308Z">
+<meta property="article:modified_time" content="2022-11-10T01:27:50.889Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -310,9 +310,22 @@
         <p>[TOC]</p>
 <h1 id="UNIX程序设计笔记"><a href="#UNIX程序设计笔记" class="headerlink" title="UNIX程序设计笔记"></a>UNIX程序设计笔记</h1><h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="1-Unix基本操作"><a href="#1-Unix基本操作" class="headerlink" title="1.Unix基本操作"></a>1.Unix基本操作</h2><h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><p>ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名</p>
+<h2 id="1-Unix基本操作"><a href="#1-Unix基本操作" class="headerlink" title="1.Unix基本操作"></a>1.Unix基本操作</h2><h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><p>ls<br>ls -l<br>ls -a<br>ls -R 递归列出所有文件夹<br>man ls查看命令帮助</p>
+<p>echo输出<br>cd改变文件夹<br>cd ..回到上一个文件夹<br>cd &#x2F;回到根目录<br>cd ~<br>cd<br>pwd 获取文件所在路径</p>
+<p>clear 清屏<br>当唯一确定时tab可以自动补齐<br>mkdir 创建文件夹<br>rmdir 移除文件夹<br>rm -r递归删除<br>rm -rf强制删除不询问<br>touch 创建文件<br>mv（移动文件&#x2F;重命名文件）<br>cp（拷贝文件或内容）<br>vi（打开一个文件编辑）<br>wq保存并退出<br>q直接退出<br>q!不保存退出</p>
+<p>head查看前几行<br>tail查看后几行</p>
+<p>ln 硬链接<br>ln -s软链接<br>wc<br>od<br>du<br>df -h查看磁盘使用情况<br>sudo临时提升权限<br>chmod更改权限<br>chown<br>find<br>grep “return” .&#x2F; -R</p>
+<p>安装和卸载<br>sudo apt-get update<br>sudo apt-get install package</p>
+<p>mount<br>sudo useradd -s 创建用户 </p>
+<p>sudo su切换到root用户</p>
+<p>进程管理：</p>
+<p>ps  aux#监控后台进程</p>
+<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><p>ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名</p>
 <h4 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h4><p>pwd cd mkdir rmdir du</p>
-<h4 id="文本编辑器vi"><a href="#文本编辑器vi" class="headerlink" title="文本编辑器vi"></a>文本编辑器vi</h4><h2 id="2-编程套件"><a href="#2-编程套件" class="headerlink" title="2.编程套件"></a>2.编程套件</h2><h3 id="gcc或cc"><a href="#gcc或cc" class="headerlink" title="gcc或cc"></a>gcc或cc</h3><h5 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h5><p>gcc [options] filename</p>
+<h4 id="文本编辑器vi"><a href="#文本编辑器vi" class="headerlink" title="文本编辑器vi"></a>文本编辑器vi</h4><p>sp上下分屏</p>
+<p>vsp左右分屏</p>
+<p>Ctr+w+w: 在多个窗口切换</p>
+<h2 id="2-编程套件"><a href="#2-编程套件" class="headerlink" title="2.编程套件"></a>2.编程套件</h2><h3 id="gcc或cc"><a href="#gcc或cc" class="headerlink" title="gcc或cc"></a>gcc或cc</h3><h5 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h5><p>gcc [options] filename</p>
 <p>gcc first.c</p>
 <h5 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h5><p>a.outs是程序first.c经过编译后的目标码 .&#x2F;a.out</p>
 <h5 id="gcc选项"><a href="#gcc选项" class="headerlink" title="gcc选项"></a>gcc选项</h5><p>编译源文件 gcc first.c gcc first.c end.c</p>
@@ -733,7 +746,7 @@
         <p><span>Title:</span><a href="/2022/10/04/Unix%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1(%E7%AC%94%E8%AE%B0)/">Unix程序设计（笔记）</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage"></a></p>
         <p><span>Created:</span>2022-10-04, 11:01:24</p>
-        <p><span>Updated:</span>2022-11-03, 11:00:18</p>
+        <p><span>Updated:</span>2022-11-10, 09:27:50</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2022/10/04/Unix%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1(%E7%AC%94%E8%AE%B0)/" title="Unix程序设计（笔记）">http://example.com/2022/10/04/Unix%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1(%E7%AC%94%E8%AE%B0)/</a>
             <span class="copy-path" data-clipboard-text="From http://example.com/2022/10/04/Unix%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1(%E7%AC%94%E8%AE%B0)/　　By " title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>

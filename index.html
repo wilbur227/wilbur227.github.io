@@ -420,7 +420,65 @@
       
           
         <p>[TOC]</p>
-<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h3 id="时间复杂度：TimeComplexity"><a href="#时间复杂度：TimeComplexity" class="headerlink" title="时间复杂度：TimeComplexity"></a>时间复杂度：TimeComplexity</h3><p>为了解决问题，程序中代码的总的执行次数</p>
+<p>1.舍弃掉计算结果中的常数项<br>2.多项式级别的运算，只保留最大项<br>3.如果当前的算法在有限可数的资源消耗内即可完成。复杂度为O(1)</p>
+<p>时间复杂度排列</p>
+<p> O(1) &lt; O(logN) &lt; O(n) &lt; O(NlogN) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) </p>
+<p>经验性结论：<br>1.单纯的顺序结构或者选择结构，时间复杂度为O(1)<br>2.一个单纯的循环结构一般情况下时间复杂度为O(n)<br>3.一般情况下两层嵌套循环，时间复杂度是O(n^2)<br>4.采用二分的分治法，时间复杂度是logn<br>5.会采用分治、递归、动态规划等算法用空间换取时间效率<br>6.两个顺序执行的循环，时间消耗取二者里的大值O(max(m,n))</p>
+<h3 id="空间复杂度：SpaceComplexity"><a href="#空间复杂度：SpaceComplexity" class="headerlink" title="空间复杂度：SpaceComplexity"></a>空间复杂度：SpaceComplexity</h3><p>为了解决问题所额外消耗的空间</p>
+<p>数据结构：<br>线性<br>非线性</p>
+<p>线性结构:一对一存储<br>顺序存储：	<br>1.基于索引的查询速度块O(1)<br>2.对无序数组的数值搜素O(n)<br>3.对有序数组的数值搜素O(logn)<br>4.在数组空间足够的前提下：<br>尾添加O(1)尾删除:O(1)<br>5.在数组空间足够的前提下：<br>头添加、头删除、中间添加、中间删除，O(n)<br>空间不足，添加元素需要进行空间申请，及原有数据的拷贝</p>
+<p>题目<br>一个有n个元素的数组，每个元素的值范围在0~n之间，检测数据是否重复出现，若重复出现，则当前数据是坏数据。<br>力扣 217</p>
+<p>解法一、排序</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">bool</span> <span class="title function_">containsDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; nums)</span> &#123;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        <span class="type">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>解法二、索引</p>
+<p>时间复杂度：O(n)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">IsDupLicate</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> nLength)</span> &#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> nIndex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//遍历</span></span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; nLength; ) &#123;</span><br><span class="line">        <span class="keyword">if</span> (arr[i] == i) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//检测当前数值作为索引对应的目标位置</span></span><br><span class="line">            nIndex = arr[i];</span><br><span class="line">            <span class="keyword">if</span> (arr[i] == arr[nIndex]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//交换</span></span><br><span class="line">                arr[i] = arr[nIndex] ^ arr[i];</span><br><span class="line">                arr[nIndex] = arr[nIndex] ^ arr[i];</span><br><span class="line">                arr[i] = arr[nIndex] ^ arr[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> arr[] = &#123; <span class="number">4</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    <span class="type">int</span> result = IsDupLicate(arr,<span class="keyword">sizeof</span>(arr)/<span class="keyword">sizeof</span>(arr[<span class="number">0</span>]));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,result);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="异或应用"><a href="#异或应用" class="headerlink" title="异或应用"></a>异或应用</h3><p>异或：相同为0，相异为1</p>
+<p>不申请中间变量交换两个变量的值<br>a &#x3D; a^b;<br>b &#x3D; a^b;<br>a &#x3D; a^b;</p>
+<p>不用运算符实现加法运算</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> num1, <span class="type">int</span> num2)</span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (num2)</span><br><span class="line">    &#123;</span><br><span class="line">            <span class="type">int</span> sum = num1 ^ num2; <span class="comment">//相加的结果</span></span><br><span class="line">            <span class="type">int</span> carry = (num1 &amp; num2) &lt;&lt; <span class="number">1</span>; <span class="comment">//进位的结果</span></span><br><span class="line">            num1 = sum;</span><br><span class="line">            num2 = carry;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>链表，</p>
+<p>数组，</p>
+<p>栈，</p>
+<p>队列，</p>
+<p>字符串。</p>
+<p>异或应用，</p>
+<p>格雷码，</p>
+<p>哈希表，</p>
+<p>跳表，</p>
+<p>kmp，</p>
+<p>Sunday</p>
+<p>一组数据内元素，2个元素出现1次，其他元素均出现2次，如何快速的找到只出现一次的元素<br>力扣 136</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;&amp; nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	    <span class="type">int</span> i;</span><br><span class="line">	    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</span><br><span class="line">	    	ans^= nums[i];</span><br><span class="line">	    &#125;</span><br><span class="line">    	</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>青蛙跳台阶<br>剑指 Offer 10- II. 青蛙跳台阶问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">public:</span><br><span class="line">    <span class="type">int</span> <span class="title function_">numWays</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> i_1 = <span class="number">1</span>;</span><br><span class="line">    	<span class="type">int</span> i_2 = <span class="number">1</span>;</span><br><span class="line">	    <span class="type">int</span> i = i_1 + i_2;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">2</span>; k &lt;= n; k++)</span><br><span class="line">    	&#123;</span><br><span class="line">	    	i = (i_1 + i_2)%<span class="number">1000000007</span>;</span><br><span class="line">	    	i_1 = i_2;</span><br><span class="line">	    	i_2 = i;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>递归<br>当前问题可以拆解成更小的子问题，子问题除数据规模以外，解决问题的方法与当前问题完全相同，并且有明确的终止条件</p>
+<p>斐波那契数列<br>F(1) &#x3D; 1;<br>F(2) &#x3D; 2<br>F(n) &#x3D; F(n-1)+F(n-2)</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>满二叉树、完全二叉树可以使用顺序存储</p>
+<h4 id="5-一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1-n"><a href="#5-一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1-n" class="headerlink" title="5.一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1~n"></a>5.一棵完全二叉树，从上到下，从左到右从1开始编号，编号范围为1~n</h4><p>编号为i的节点，如果</p>
+<p>1&gt;满足： 2*i &lt;&#x3D; n 编号为i的节点有左孩子，左孩子编号为2*i</p>
+<p>2&gt;满足：2*i+1 &lt;&#x3D;n 编号为i的节点有右孩子，右孩子编号为2*i+1,否则无右</p>
+<p>3&gt;父亲节点编号范围为：1~n&#x2F;2</p>
+<h3 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h3><p>前序：</p>
+<p>中序：左、根、右</p>
+<p>后序：左、右、根</p>
+<h3 id="BST"><a href="#BST" class="headerlink" title="BST"></a>BST</h3><p>1查找</p>
+<p>2Del</p>
+
       
     </div>
     
@@ -478,9 +536,22 @@
         <p>[TOC]</p>
 <h1 id="UNIX程序设计笔记"><a href="#UNIX程序设计笔记" class="headerlink" title="UNIX程序设计笔记"></a>UNIX程序设计笔记</h1><h2 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;&gt;</span></span></span><br></pre></td></tr></table></figure>
 
-<h2 id="1-Unix基本操作"><a href="#1-Unix基本操作" class="headerlink" title="1.Unix基本操作"></a>1.Unix基本操作</h2><h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><p>ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名</p>
+<h2 id="1-Unix基本操作"><a href="#1-Unix基本操作" class="headerlink" title="1.Unix基本操作"></a>1.Unix基本操作</h2><h3 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h3><p>ls<br>ls -l<br>ls -a<br>ls -R 递归列出所有文件夹<br>man ls查看命令帮助</p>
+<p>echo输出<br>cd改变文件夹<br>cd ..回到上一个文件夹<br>cd &#x2F;回到根目录<br>cd ~<br>cd<br>pwd 获取文件所在路径</p>
+<p>clear 清屏<br>当唯一确定时tab可以自动补齐<br>mkdir 创建文件夹<br>rmdir 移除文件夹<br>rm -r递归删除<br>rm -rf强制删除不询问<br>touch 创建文件<br>mv（移动文件&#x2F;重命名文件）<br>cp（拷贝文件或内容）<br>vi（打开一个文件编辑）<br>wq保存并退出<br>q直接退出<br>q!不保存退出</p>
+<p>head查看前几行<br>tail查看后几行</p>
+<p>ln 硬链接<br>ln -s软链接<br>wc<br>od<br>du<br>df -h查看磁盘使用情况<br>sudo临时提升权限<br>chmod更改权限<br>chown<br>find<br>grep “return” .&#x2F; -R</p>
+<p>安装和卸载<br>sudo apt-get update<br>sudo apt-get install package</p>
+<p>mount<br>sudo useradd -s 创建用户 </p>
+<p>sudo su切换到root用户</p>
+<p>进程管理：</p>
+<p>ps  aux#监控后台进程</p>
+<h4 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h4><p>ls -al 列目录 cp 源文件 目标文件 rm 文件名 mv 源文件 目标文件 ln 源文件 目标文件 cat 文件名 more 文件名</p>
 <h4 id="目录管理"><a href="#目录管理" class="headerlink" title="目录管理"></a>目录管理</h4><p>pwd cd mkdir rmdir du</p>
-<h4 id="文本编辑器vi"><a href="#文本编辑器vi" class="headerlink" title="文本编辑器vi"></a>文本编辑器vi</h4><h2 id="2-编程套件"><a href="#2-编程套件" class="headerlink" title="2.编程套件"></a>2.编程套件</h2><h3 id="gcc或cc"><a href="#gcc或cc" class="headerlink" title="gcc或cc"></a>gcc或cc</h3><h5 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h5><p>gcc [options] filename</p>
+<h4 id="文本编辑器vi"><a href="#文本编辑器vi" class="headerlink" title="文本编辑器vi"></a>文本编辑器vi</h4><p>sp上下分屏</p>
+<p>vsp左右分屏</p>
+<p>Ctr+w+w: 在多个窗口切换</p>
+<h2 id="2-编程套件"><a href="#2-编程套件" class="headerlink" title="2.编程套件"></a>2.编程套件</h2><h3 id="gcc或cc"><a href="#gcc或cc" class="headerlink" title="gcc或cc"></a>gcc或cc</h3><h5 id="编译程序"><a href="#编译程序" class="headerlink" title="编译程序"></a>编译程序</h5><p>gcc [options] filename</p>
 <p>gcc first.c</p>
 <h5 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h5><p>a.outs是程序first.c经过编译后的目标码 .&#x2F;a.out</p>
 <h5 id="gcc选项"><a href="#gcc选项" class="headerlink" title="gcc选项"></a>gcc选项</h5><p>编译源文件 gcc first.c gcc first.c end.c</p>
@@ -1056,7 +1127,7 @@
 <h5 id="1-5关联性设置："><a href="#1-5关联性设置：" class="headerlink" title="1.5关联性设置："></a>1.5关联性设置：</h5><p>1.用本地Git软件与Github账号进行关联设置</p>
 <p>2.为云端的仓库地址起别名，便于后期将本地内容上传同步到云端</p>
 <h5 id="1-6Git软件的介绍与Git命令"><a href="#1-6Git软件的介绍与Git命令" class="headerlink" title="1.6Git软件的介绍与Git命令"></a>1.6Git软件的介绍与Git命令</h5><p>Git是一个分布式版本的控制系统，开发使用Git软件可以特别方便的管理云端仓库，对云端内容进行同步，修改，删除等等操作</p>
-<p>ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#99;&#111;&#109;</a> #关联认证</p>
+<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a> #关联认证</p>
 <p>git init #创建本地仓库</p>
 <p>git config –list #查看git配置信息</p>
 <p>git config –global #键值对 #向配置文件中添加配置项user.name user.emali</p>
@@ -1064,10 +1135,10 @@
 <h5 id="1-7配置流程："><a href="#1-7配置流程：" class="headerlink" title="1.7配置流程："></a>1.7配置流程：</h5><p>1.根据生成密钥的存储位置，找到id_rsa.pub公有密钥文件,拷贝其中的密钥字符串</p>
 <p>2.Github云端账号中用户头像位置的下拉菜单，选择settings</p>
 <p>3.SSH and GPG Key，将复制的本地密钥字符串粘贴，Add Keys</p>
-<p>4.ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;</a> #再次测试关联</p>
-<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>4.ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a> #再次测试关联</p>
+<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#103;&#105;&#x74;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>为云端仓库地址起别名，后续通过别名上传本地内容到云端</p>
-<p>git remote add origin <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>git remote add origin <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>git remote remove origin #删除别名</p>
 <h5 id="1-9完整代码提交流程"><a href="#1-9完整代码提交流程" class="headerlink" title="1.9完整代码提交流程"></a>1.9完整代码提交流程</h5><p>git add code.cpp #将代码添加到缓冲区</p>
 <p>git status #查看缓冲区内容和状态</p>
