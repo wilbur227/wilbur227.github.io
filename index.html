@@ -303,7 +303,34 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="教师工作量管理系统思路（链表应用）"><a href="#教师工作量管理系统思路（链表应用）" class="headerlink" title="教师工作量管理系统思路（链表应用）"></a>教师工作量管理系统思路（链表应用）</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p><img src="/%E6%95%99%E5%B8%88%E5%B7%A5%E4%BD%9C%E9%87%8F%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E6%80%9D%E8%B7%AF%EF%BC%88%E9%93%BE%E8%A1%A8%E5%BA%94%E7%94%A8%EF%BC%89.assets/d65cd391c4f0968a1e6f2fc452575a5.jpg" alt="d65cd391c4f0968a1e6f2fc452575a5"></p>
+        <h1 id="教师工作量管理系统思路（链表应用）"><a href="#教师工作量管理系统思路（链表应用）" class="headerlink" title="教师工作量管理系统思路（链表应用）"></a>教师工作量管理系统思路（链表应用）</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>教师工作量管理系统问题描述：<br>已知一学校有4门课程（课程编号、课程名称，课时）,5个教师（教师号、姓名、性别、职称），在计算教师工作量时，其计算方法如下表：</p>
+<table>
+<thead>
+<tr>
+<th>班级数目</th>
+<th>单个教学任务总课时</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;&#x3D;2</td>
+<td>1.5*(理论课时＋实验课时）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2*(理论课时＋实验课时）</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;4</td>
+<td>2.5*(理论课时＋实验课时）</td>
+</tr>
+</tbody></table>
+<p>编写一程序，完成以下功能：<br>1)能从文件导入教师的授课信息，文件格式如下：<br>     教师编号 课程编号 上课学期 </p>
+<p>2)能从键盘录入教师授课信息；</p>
+<p>3)能根据上课学期、课程编号删除授课信息；</p>
+<p>4)能根据上课学期、课程编号修改授课教师；</p>
+<p>5)能计算每个学期的教师工作量；</p>
+<p>6)查询指定教师编号查询授课历史；</p>
+<p>7)能将授课信息导出到文件。</p>
 <h3 id="初始信息"><a href="#初始信息" class="headerlink" title="初始信息"></a>初始信息</h3><p>将课程信息、教师信息分别用结构体数组进行存储</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储课程信息</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Course</span> &#123;</span></span><br><span class="line">	<span class="type">int</span> id;<span class="comment">//课程编号</span></span><br><span class="line">	<span class="type">int</span> TheoryCHour;<span class="comment">//理论学时</span></span><br><span class="line">	<span class="type">int</span> ExperiCHour;<span class="comment">//实验学时</span></span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//课程名称</span></span><br><span class="line">&#125;cr[<span class="number">4</span>];</span><br><span class="line"><span class="comment">//存储教师信息</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Teacher</span> &#123;</span></span><br><span class="line">	<span class="type">int</span> id;<span class="comment">//教师号</span></span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>];<span class="comment">//姓名</span></span><br><span class="line">	<span class="type">char</span> sex[<span class="number">10</span>];<span class="comment">//性别</span></span><br><span class="line">	<span class="type">char</span> prof[<span class="number">20</span>];<span class="comment">//职称</span></span><br><span class="line">&#125;tr[<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
 
@@ -1532,7 +1559,7 @@
 <h5 id="1-5关联性设置："><a href="#1-5关联性设置：" class="headerlink" title="1.5关联性设置："></a>1.5关联性设置：</h5><p>1.用本地Git软件与Github账号进行关联设置</p>
 <p>2.为云端的仓库地址起别名，便于后期将本地内容上传同步到云端</p>
 <h5 id="1-6Git软件的介绍与Git命令"><a href="#1-6Git软件的介绍与Git命令" class="headerlink" title="1.6Git软件的介绍与Git命令"></a>1.6Git软件的介绍与Git命令</h5><p>Git是一个分布式版本的控制系统，开发使用Git软件可以特别方便的管理云端仓库，对云端内容进行同步，修改，删除等等操作</p>
-<p>ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#x74;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#x6f;&#109;</a> #关联认证</p>
+<p>ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a> #关联认证</p>
 <p>git init #创建本地仓库</p>
 <p>git config –list #查看git配置信息</p>
 <p>git config –global #键值对 #向配置文件中添加配置项user.name user.emali</p>
@@ -1540,10 +1567,10 @@
 <h5 id="1-7配置流程："><a href="#1-7配置流程：" class="headerlink" title="1.7配置流程："></a>1.7配置流程：</h5><p>1.根据生成密钥的存储位置，找到id_rsa.pub公有密钥文件,拷贝其中的密钥字符串</p>
 <p>2.Github云端账号中用户头像位置的下拉菜单，选择settings</p>
 <p>3.SSH and GPG Key，将复制的本地密钥字符串粘贴，Add Keys</p>
-<p>4.ssh -T <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#64;&#x67;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;</a> #再次测试关联</p>
-<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>4.ssh -T <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#109;</a> #再次测试关联</p>
+<h5 id="1-8定位云端仓库"><a href="#1-8定位云端仓库" class="headerlink" title="1.8定位云端仓库"></a>1.8定位云端仓库</h5><p><a href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>为云端仓库地址起别名，后续通过别名上传本地内容到云端</p>
-<p>git remote add origin <a href="mailto:&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#105;&#x74;&#x40;&#x67;&#105;&#116;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
+<p>git remote add origin <a href="mailto:&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#99;&#111;&#x6d;</a>:wilbur227&#x2F;cabbage-0.git</p>
 <p>git remote remove origin #删除别名</p>
 <h5 id="1-9完整代码提交流程"><a href="#1-9完整代码提交流程" class="headerlink" title="1.9完整代码提交流程"></a>1.9完整代码提交流程</h5><p>git add code.cpp #将代码添加到缓冲区</p>
 <p>git status #查看缓冲区内容和状态</p>
