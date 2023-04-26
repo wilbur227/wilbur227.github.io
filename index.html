@@ -100,7 +100,7 @@
 <div class="intrude-less">
     <header id="header" class="inner">
         <a href="/" class="profilepic">
-            <img src="/img/keyboardcat.jpg" class="animated zoomIn">
+            <img src="/img/emocat.jpg" class="animated zoomIn">
         </a>
         <hgroup>
           <h1 class="header-author"><a href="/"></a></h1>
@@ -231,7 +231,7 @@
     <div class="intrude-less">
         <header id="header" class="inner">
             <a href="/" class="profilepic">
-                <img src="/img/keyboardcat.jpg" class="animated zoomIn">
+                <img src="/img/emocat.jpg" class="animated zoomIn">
             </a>
             <hgroup>
               <h1 class="header-author"><a href="/" title="回到主页"></a></h1>
@@ -273,6 +273,77 @@
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-关于函数的程序设计" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2023/04/26/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="article-date">
+      <time datetime="2023-04-26T04:20:22.427Z" itemprop="datePublished">2023-04-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="关于函数的程序设计"><a href="#关于函数的程序设计" class="headerlink" title="关于函数的程序设计"></a>关于函数的程序设计</h1><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compare</span>(<span class="params">a,b</span>):</span><br><span class="line">    <span class="keyword">if</span> a&gt;b:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;The bigger is:&#x27;</span>,a,end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;The smaller is:&#x27;</span>,b,end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> a&lt;b:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;The bigger is:&#x27;</span>, b, end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;The smaller is:&#x27;</span>, a, end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;They are equal together&#x27;</span>,a,<span class="string">&#x27;=&#x27;</span>,b,end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">compare(<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入数字a：&#x27;</span>)),<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入数字b：&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682482189606.png" alt="1682482189606"></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例3实现计算圆的面积</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">r=<span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;请输入圆的半径：&#x27;</span>))</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">area</span>(<span class="params">r</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isinstance</span>(r,<span class="built_in">int</span>) <span class="keyword">or</span> <span class="built_in">isinstance</span>(r,<span class="built_in">float</span>):</span><br><span class="line">        <span class="keyword">return</span> math.pi*r*r</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">&#x27;Input error!&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(area(r))</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682482301083.png" alt="1682482301083"></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例4输出一个首项为参数平均数，且其他各项大于平均数的元组</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">array</span>(<span class="params">*p</span>):</span><br><span class="line">    average=<span class="built_in">sum</span>(p)//<span class="built_in">len</span>(p)</span><br><span class="line">    d=[i <span class="keyword">for</span> i <span class="keyword">in</span> p <span class="keyword">if</span> i&gt;average]</span><br><span class="line">    <span class="keyword">return</span> (average,)+<span class="built_in">tuple</span>(d)</span><br><span class="line"><span class="built_in">print</span>(array(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.assets/1682482743109.png" alt="1682482743109"></p>
+<h2 id="4"><a href="#4" class="headerlink" title="4"></a>4</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#案例5返回第一个为大写字母元素的个数，第二元素为小写字母个数的元组</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dem3</span>(<span class="params">s</span>):</span><br><span class="line">    result=[<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;a&#x27;</span>&lt;=i&lt;=<span class="string">&#x27;z&#x27;</span>:</span><br><span class="line">            result[<span class="number">0</span>]+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result[<span class="number">1</span>]+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">tuple</span>(result)</span><br><span class="line"><span class="built_in">print</span>(dem3(<span class="string">&#x27;aaaaAAA&#x27;</span>),end=<span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.assets/1682482722900.png" alt="1682482722900"></p>
+<h2 id="5"><a href="#5" class="headerlink" title="5"></a>5</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="built_in">print</span>([random.randint(<span class="number">1</span>,<span class="number">20</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">50</span>)],end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#打印杨辉三角</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dem5</span>(<span class="params">t</span>):</span><br><span class="line">    <span class="built_in">print</span>([<span class="number">1</span>],end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>([<span class="number">1</span>,<span class="number">1</span>],end=<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">    line=[<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,t):</span><br><span class="line">        r=[]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(line)-<span class="number">1</span>):</span><br><span class="line">            r.append(line[j]+line[j+<span class="number">1</span>])</span><br><span class="line">        line=[<span class="number">1</span>]+r+[<span class="number">1</span>]</span><br><span class="line">        <span class="built_in">print</span>(line)</span><br><span class="line">dem5(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E5%85%B3%E4%BA%8E%E5%87%BD%E6%95%B0%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1.assets/1682482704612.png" alt="1682482704612"></p>
+<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><h2 id="1-打印对象的所有属性"><a href="#1-打印对象的所有属性" class="headerlink" title="1.打印对象的所有属性"></a>1.打印对象的所有属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.eyes=<span class="number">2</span></span><br><span class="line">        self.name=<span class="string">&quot;zhangsan&quot;</span></span><br><span class="line">        self.age = <span class="number">30</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">vars</span>(p))</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682481753346.png" alt="1682481753346"></p>
+<h2 id="2-在函数中将对象的实例作为参数传递"><a href="#2-在函数中将对象的实例作为参数传递" class="headerlink" title="2.在函数中将对象的实例作为参数传递"></a>2.在函数中将对象的实例作为参数传递</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Vehicle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.trucks = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">add_truck</span>(<span class="params">self,truck</span>):</span><br><span class="line">        self.trucks.append(truck)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Truck</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,color</span>):</span><br><span class="line">        self.color = color</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__repr__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&#123;&#125;&quot;</span>.<span class="built_in">format</span>(self.color)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    v = Vehicle()</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="string">&#x27;Red Pink Black&#x27;</span>.split():</span><br><span class="line">        t = Truck(t)</span><br><span class="line">        v.add_truck(t)</span><br><span class="line">    <span class="built_in">print</span>(v.trucks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682481865898.png" alt="1682481865898"></p>
+<h2 id="3-在运行时创建类属性"><a href="#3-在运行时创建类属性" class="headerlink" title="3.在运行时创建类属性"></a>3.在运行时创建类属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line"><span class="built_in">setattr</span>(p,<span class="string">&#x27;name&#x27;</span>,<span class="string">&#x27;buji&#x27;</span>)</span><br><span class="line"><span class="built_in">setattr</span>(p,<span class="string">&#x27;age&#x27;</span>,<span class="string">&#x27;30&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p.age)</span><br><span class="line"><span class="built_in">print</span>(p.name)</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682481978076.png" alt="1682481978076"></p>
+<h2 id="4-python-中创建和使用自定义self参数"><a href="#4-python-中创建和使用自定义self参数" class="headerlink" title="4.python 中创建和使用自定义self参数"></a>4.python 中创建和使用自定义self参数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">person,age,name</span>):</span><br><span class="line">        person.age=age</span><br><span class="line">        person.name=name</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">person_move</span>(<span class="params">person_1</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">str</span>(person_1.age)+<span class="string">&#x27; : &#x27;</span>+person_1.name)</span><br><span class="line"></span><br><span class="line">p = Person(<span class="number">30</span>,<span class="string">&#x27;jibu&#x27;</span>)</span><br><span class="line">p.person_move()</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\z9768\AppData\Roaming\Typora\typora-user-images\1682482052317.png" alt="1682482052317"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-2023新年快乐" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1934,100 +2005,6 @@
 
 
 <h4 id="popen模型"><a href="#popen模型" class="headerlink" title="popen模型"></a>popen模型</h4><h3 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a>有名管道</h3><h4 id="创建有名管道"><a href="#创建有名管道" class="headerlink" title="创建有名管道"></a>创建有名管道</h4><h4 id="应用有名管道的流程"><a href="#应用有名管道的流程" class="headerlink" title="应用有名管道的流程"></a>应用有名管道的流程</h4><h4 id="应用有名管道的模型"><a href="#应用有名管道的模型" class="headerlink" title="应用有名管道的模型"></a>应用有名管道的模型</h4><h5 id="“1-1”模型"><a href="#“1-1”模型" class="headerlink" title="“1-1”模型"></a>“1-1”模型</h5><h5 id="“n-1”模型"><a href="#“n-1”模型" class="headerlink" title="“n-1”模型"></a>“n-1”模型</h5><h5 id="“n-1-n”模型"><a href="#“n-1-n”模型" class="headerlink" title="“n-1-n”模型"></a>“n-1-n”模型</h5><h2 id="12-消息队列"><a href="#12-消息队列" class="headerlink" title="12.消息队列"></a>12.消息队列</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-成就解锁（日常）" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2022/09/30/%E6%88%90%E5%B0%B1%E8%A7%A3%E9%94%81%EF%BC%88%E6%97%A5%E5%B8%B8%EF%BC%89/" class="article-date">
-      <time datetime="2022-09-30T04:44:00.000Z" itemprop="datePublished">2022-09-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/30/%E6%88%90%E5%B0%B1%E8%A7%A3%E9%94%81%EF%BC%88%E6%97%A5%E5%B8%B8%EF%BC%89/">成就解锁（日常）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="成就"><a href="#成就" class="headerlink" title="成就"></a>成就</h1><h2 id="已达成"><a href="#已达成" class="headerlink" title="已达成"></a>已达成</h2><h3 id="1-敲代码的猫的博客"><a href="#1-敲代码的猫的博客" class="headerlink" title="1.敲代码的猫的博客"></a>1.敲代码的猫的博客</h3><p>搭建好自己的博客并发布</p>
-<h3 id="4-初来乍到"><a href="#4-初来乍到" class="headerlink" title="4.初来乍到"></a>4.初来乍到</h3><p>参加CODEYA捧杯</p>
-<h3 id="12-最后的礼物"><a href="#12-最后的礼物" class="headerlink" title="12.最后的礼物"></a>12.最后的礼物</h3><p>2022年10月4日提交</p>
-<hr>
-<h2 id="未达成"><a href="#未达成" class="headerlink" title="未达成"></a>未达成</h2><h3 id="2-C-精通"><a href="#2-C-精通" class="headerlink" title="2.C++精通"></a>2.C++精通</h3><p>学完并掌握C++从入门到精通</p>
-<h3 id="3-JAVA精通"><a href="#3-JAVA精通" class="headerlink" title="3.JAVA精通"></a>3.JAVA精通</h3><p>学完并掌握java从入门到精通</p>
-<h3 id="5-JS精通"><a href="#5-JS精通" class="headerlink" title="5.JS精通"></a>5.JS精通</h3><p>学完并掌握javascript从入门到精通</p>
-<h3 id="6-PYTHON精通"><a href="#6-PYTHON精通" class="headerlink" title="6.PYTHON精通"></a>6.PYTHON精通</h3><p>学完并掌握python从入门到精通</p>
-<h3 id="7-C-精通"><a href="#7-C-精通" class="headerlink" title="7.C#精通"></a>7.C#精通</h3><p>学完并掌握C#从入门到精通</p>
-<h3 id="8-算法精通"><a href="#8-算法精通" class="headerlink" title="8.算法精通"></a>8.算法精通</h3><p>学完算法和数据结构</p>
-<h3 id="9-算法达人"><a href="#9-算法达人" class="headerlink" title="9.算法达人"></a>9.算法达人</h3><p>做完100道leecode算法题并提交</p>
-<h3 id="10-项目精通"><a href="#10-项目精通" class="headerlink" title="10.项目精通"></a>10.项目精通</h3><p>做三个小型项目并发布博客分享</p>
-<h3 id="11-项目达人"><a href="#11-项目达人" class="headerlink" title="11.项目达人"></a>11.项目达人</h3><p>做三个中型项目并提交到GITHUB</p>
-<h3 id="13-迟来的四级"><a href="#13-迟来的四级" class="headerlink" title="13.迟来的四级"></a>13.迟来的四级</h3><p>在2022年考过四级</p>
-<h3 id="14-UE4毕业"><a href="#14-UE4毕业" class="headerlink" title="14.UE4毕业"></a>14.UE4毕业</h3><p>学完谌嘉诚的UE4教程视频</p>
-<h3 id="15-我的游戏"><a href="#15-我的游戏" class="headerlink" title="15.我的游戏"></a>15.我的游戏</h3><p>做一款完整的UE4游戏</p>
-<h3 id="16-我爱学习"><a href="#16-我爱学习" class="headerlink" title="16.我爱学习"></a>16.我爱学习</h3><p>补完科林所有视频</p>
-<h3 id="17-笔记达人"><a href="#17-笔记达人" class="headerlink" title="17.笔记达人"></a>17.笔记达人</h3><p>整理各个阶段笔记</p>
-<h3 id="18-爱分享的博主"><a href="#18-爱分享的博主" class="headerlink" title="18.爱分享的博主"></a>18.爱分享的博主</h3><p>做十篇简单技术分享</p>
-<h3 id="19-自律"><a href="#19-自律" class="headerlink" title="19.自律"></a>19.自律</h3><p>一个星期不打游戏</p>
-<h3 id="20-断念"><a href="#20-断念" class="headerlink" title="20.断念"></a>20.断念</h3><p>一个星期不聊天</p>
-<h3 id="21-成就精通"><a href="#21-成就精通" class="headerlink" title="21.成就精通"></a>21.成就精通</h3><p>达成十个成就</p>
-<h3 id="22-成就达人"><a href="#22-成就达人" class="headerlink" title="22.成就达人"></a>22.成就达人</h3><p>达成十个成就</p>
-<h3 id="23-运动健将"><a href="#23-运动健将" class="headerlink" title="23.运动健将"></a>23.运动健将</h3><p>坚持晨跑1周</p>
-<h3 id="24-勤俭持家"><a href="#24-勤俭持家" class="headerlink" title="24.勤俭持家"></a>24.勤俭持家</h3><p>坚持15天不乱花钱</p>
-<h3 id="25-长征"><a href="#25-长征" class="headerlink" title="25.长征"></a>25.长征</h3><p>在30天内节省1000元</p>
-<h3 id="26-启动基金"><a href="#26-启动基金" class="headerlink" title="26.启动基金"></a>26.启动基金</h3><p>攒下5000元不能花</p>
-<h3 id="27-坚持午休"><a href="#27-坚持午休" class="headerlink" title="27.坚持午休"></a>27.坚持午休</h3><p>6：00 起 23：00睡 午睡一小时</p>
-<h3 id="28-敲代码的猫"><a href="#28-敲代码的猫" class="headerlink" title="28.敲代码的猫"></a>28.敲代码的猫</h3><p>坚持敲30天代码</p>
-<h3 id="29-敲代码的狐狸"><a href="#29-敲代码的狐狸" class="headerlink" title="29.敲代码的狐狸"></a>29.敲代码的狐狸</h3><p>坚持敲60天代码</p>
-<h3 id="30-敲代码达人"><a href="#30-敲代码达人" class="headerlink" title="30.敲代码达人"></a>30.敲代码达人</h3><p>坚持敲15天代码</p>
-<h3 id="程序员的必修课"><a href="#程序员的必修课" class="headerlink" title="程序员的必修课"></a>程序员的必修课</h3><p>看完以下书籍： </p>
-<p>TCP&#x2F;IP详解卷1卷2</p>
-<p>计算机网络</p>
-<p>离散数学</p>
-<p>数据结构与算法</p>
-<p>MySQL</p>
-<p>Oracle</p>
-<p>SQL Server</p>
-
       
     </div>
     
